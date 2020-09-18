@@ -30,7 +30,7 @@ function add(img, name, price) {
   <div class="card-body">
     <h5 class="card-title">${name}</h5>
     <p class="card-text">${price}</p>
-    <a href="#" class="btn btn-primary" onclick="remove(event)">Add to cart</a>
+    <a href="#" class="btn btn-primary" onclick="remove(event)">Remove</a>
   </div>
 </div>`;
 }
