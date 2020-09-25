@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: grey;
+  padding: 50px;
+  border-radius: 30px;
+}
+input:not([type="submit"]) {
+  width: 25vw;
+  padding: 5px;
+  border-radius: 5px;
+}
+input[type="submit"] {
+  padding: 5px;
+}
