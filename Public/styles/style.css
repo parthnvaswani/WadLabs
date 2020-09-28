@@ -1,0 +1,109 @@
+img {
+  width: 100%;
+}
+
+.landing {
+  position: relative;
+  background: url("../images/showcase.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  margin-top: -24px;
+  margin-bottom: -50px;
+}
+
+.landing-inner {
+  padding-top: 80px;
+}
+
+.dark-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card-form {
+  opacity: 0.9;
+}
+
+.latest-profiles-img {
+  width: 40px;
+  height: 40px;
+}
+
+.form-control::placeholder {
+  color: #bbb !important;
+}
+
+.footer-details {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: space-around;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+.feed-div {
+  display: flex;
+  height: 5vh;
+  align-items: center;
+  width: 70vw;
+  margin: 0 auto;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+.cart-butt {
+  margin-left: auto;
+  cursor: pointer;
+}
+a:hover {
+  text-decoration: none;
+}
+.items,
+.cart {
+  width: 70vw;
+  margin: 0 auto;
+}
+.pane {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-img-top {
+  cursor: pointer;
+  max-height: 250px;
+}
+
+#lb-back {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  transition: all ease 0.4s;
+}
+#lb-back.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+#lb-img {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+#lb-img img {
+  width: auto;
+  height: 100vh;
+}

@@ -1,0 +1,6 @@
+Options All -Indexes
+
+
+<Files "config.php">
+    Deny from all
+</Files>
