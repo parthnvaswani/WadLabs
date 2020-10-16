@@ -1,0 +1,39 @@
+<form
+  enctype="multipart/form-data"
+  action="http://46.51.220.101/kookooapi/index.php/IVRSUploadFile/UploadFile"
+  method="post"
+  onsubmit="hitExternal(event)"
+>
+  <input id="default_file" name="file" type="file" />
+
+  <input id="account" name="account" type="hidden" value="testing" />
+
+  <input type="submit" value="Save" />
+</form>
+<script>
+  $("#default_file").change(function (e) {
+    let formdata = new FormData();
+    if ($(this).prop("files").length > 0) {
+      file = $(this).prop("files")[0];
+      formdata.append("music", file);
+    }
+  });
+  function hitExternal(e) {
+    $.ajax({
+      url: "http://46.51.220.101/kookooapi/index.php/IVRSUploadFile/UploadFile",
+      type: "POST",
+      data: new FormData($("#default_file")[0], {
+        data: { account: "testing" },
+      }),
+      processData: false,
+      contentType: "application/json",
+      success: function (response) {
+        console.log("resp: ", response);
+      },
+      error: function (jqXHR, textStatus, errorMessage) {
+        console.log("error:", errorMessage);
+      },
+    });
+    e.preventDefault();
+  }
+</script>

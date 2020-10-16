@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo Program</title>
+  </head>
+  <body>
+    <form name="myform" method="post" onsubmit="myFunction(event)">
+      Max Age: <input type="text" name="age" id="age" /><br /><br />
+
+      Max WPM: <input type="text" name="wpm" id="wpm" /><br /><br />
+
+      Sex:
+
+      <select name="sex" id="sex">
+        <option value="M">M</option>
+
+        <option value="F">F</option>
+      </select>
+
+      <input type="submit" value="Click Here" />
+    </form>
+
+    <div id="blankdiv">Result Will Be Here</div>
+
+    <script type="text/javascript">
+      function myFunction(e) {
+        e.preventDefault();
+        let myVar;
+
+        try {
+          myVar = new XMLHttpRequest();
+        } catch (e) {
+          try {
+            myVar = new ActiveXObject("Msxml2.XMLHTTP");
+          } catch (e) {
+            try {
+              myVar = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (e) {
+              alert("Your Browser Does Not Support XHR");
+
+              return false;
+            }
+          }
+        }
+
+        myVar.onreadystatechange = function () {
+          if (myVar.readyState == 4 && myVar.status == 200) {
+            let blankDiv = document.getElementById("blankdiv");
+
+            blankDiv.innerHTML = myVar.responseText;
+          }
+        };
+
+        let age = document.getElementById("age").value;
+
+        let wpm = document.getElementById("wpm").value;
+
+        let sex = document.getElementById("sex").value;
+
+        myVar.open("POST", "demo.php", true);
+        myVar.setRequestHeader(
+          "Content-type",
+          "application/x-www-form-urlencoded"
+        );
+        myVar.send(`age=${age}&sex=${sex}&wpm=${wpm}`);
+      }
+    </script>
+  </body>
+</html>

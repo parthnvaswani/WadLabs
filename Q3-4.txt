@@ -1,0 +1,52 @@
+Q3. I want to return JSON from a PHP script.
+
+Do I just echo the result? Do I have to set the Content-Type header?
+
+The answer given below is it right or wrong:
+
+<?php
+
+$data = /** whatever you're serializing **/;
+
+header('Content-Type: application/json');
+
+echo json_encode($data);
+
+?>
+
+Ans: It can work without header also but with header it is also fine.
+
+
+Q4.
+
+fetch(url).then((response) => {
+
+if (response.ok) {
+
+return response.json();
+
+} else {
+
+throw new Error('Something went wrong');
+
+}
+
+})
+
+.then((responseJson) => {
+
+// Do something with the response
+
+})
+
+.catch((error) => {
+
+console.log(error)
+
+});
+
+Q.In case of a 404 error what will happen in the above code?
+Ans.In case of 404 error Something went wrong error will be thrown from the else block.And it will be caught in catch block and will be logged to console.
+
+Q.When is a promise rejected?
+Ans.The Promise returned from fetch() won't reject on HTTP error status even if the response is an HTTP 404 or 500. Instead, it will resolve normally (with ok status set to false), and it will only reject on network failure or if anything prevented the request from completing.
