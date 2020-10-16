@@ -3,6 +3,7 @@
   action="http://46.51.220.101/kookooapi/index.php/IVRSUploadFile/UploadFile"
   method="post"
   onsubmit="hitExternal(event)"
+  id="form1"
 >
   <input id="default_file" name="file" type="file" />
 
@@ -22,11 +23,9 @@
     $.ajax({
       url: "http://46.51.220.101/kookooapi/index.php/IVRSUploadFile/UploadFile",
       type: "POST",
-      data: new FormData($("#default_file")[0], {
-        data: { account: "testing" },
-      }),
+      data: new FormData($("#form1")),
       processData: false,
-      contentType: "application/json",
+      contentType: "multipart/form-data",
       success: function (response) {
         console.log("resp: ", response);
       },
