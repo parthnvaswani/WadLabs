@@ -29,20 +29,22 @@
         e.preventDefault();
         let myVar;
 
-        try {
+        if (window.XMLHttpRequest) {
           myVar = new XMLHttpRequest();
-        } catch (e) {
-          try {
-            myVar = new ActiveXObject("Msxml2.XMLHTTP");
-          } catch (e) {
-            try {
-              myVar = new ActiveXObject("Microsoft.XMLHTTP");
-            } catch (e) {
-              alert("Your Browser Does Not Support XHR");
+        } else if (
+          window.ActiveXObject &&
+          new ActiveXObject("Msxml2.XMLHTTP")
+        ) {
+          myVar = new ActiveXObject("Msxml2.XMLHTTP");
+        } else if (
+          window.ActiveXObject &&
+          new ActiveXObject("Microsoft.XMLHTTP")
+        ) {
+          myVar = new ActiveXObject("Microsoft.XMLHTTP");
+        } else {
+          alert("Your Browser Does Not Support XHR");
 
-              return false;
-            }
-          }
+          return false;
         }
 
         myVar.onreadystatechange = function () {
