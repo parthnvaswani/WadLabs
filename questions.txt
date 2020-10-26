@@ -1,0 +1,9 @@
+[1]Search for a free REST API available related to english dictionary, currency conversion etc. any  API .
+Create a PHP page that takes suitable input from user that is required to query the API.
+(i) Use CURL to call the API from php and then show a well formatted output to your user.
+(ii) Use ajax to call the API from web page and then show a well formatted output to your user.
+
+
+Ensure that you use GET/POST both methods. If required call multiple APIs make multiple pages.
+
+[2] Create a rest API in PHP and call your API from another PHP web page using CURL.
