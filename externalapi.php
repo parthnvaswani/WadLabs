@@ -56,8 +56,8 @@
 <?php 
 if(isset($_POST['query'])){
   $curl = curl_init();
-
-curl_setopt($curl, CURLOPT_URL, "https://en.wikipedia.org/w/rest.php/v1/search/page?q=$_POST[query]&limit=1");
+  $str=rawurlencode($_POST['query']);
+curl_setopt($curl, CURLOPT_URL, "https://en.wikipedia.org/w/rest.php/v1/search/page?q=$str&limit=1");
 
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 
