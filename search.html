@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search</title>
+    <style>
+      input {
+        padding: 10px;
+        border-radius: 5px;
+        display: block;
+        margin: auto;
+        width: 50vw;
+        font-size: large;
+      }
+      .container {
+        margin: auto;
+        width: 50vw;
+        font-size: large;
+      }
+      ul {
+        background: whitesmoke;
+        list-style: none;
+        margin: 0;
+        width: 50vw;
+        padding: 0;
+      }
+      li {
+        cursor: pointer;
+        background: whitesmoke;
+        padding: 20px;
+        width: 50vw;
+      }
+      li:hover {
+        background-color: rgb(122, 122, 122);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <input
+        type="text"
+        name="search"
+        id="search"
+        placeholder="search..."
+        onkeyup="debounceSearch(event)"
+        autocomplete="off"
+      />
+      <ul></ul>
+    </div>
+    <script>
+      let timeout;
+      async function search(query) {
+        let res = await fetch(`consumer.php?q=${query}`);
+        let json = await res.json();
+        const ul = document.querySelector("ul");
+        let r = "";
+        json.forEach((e) => {
+          r += `<li>${e}</li>`;
+        });
+        ul.innerHTML = r;
+      }
+      function debounceSearch(e) {
+        if (timeout) clearTimeout(timeout);
+        let query = e.target.value;
+        timeout = setTimeout(() => search(query), 450);
+      }
+    </script>
+  </body>
+</html>
